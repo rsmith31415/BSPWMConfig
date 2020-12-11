@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 # Project Name      -
 # Started On        - Fri 11 Dec 15:58:54 GMT 2020
-# Last Change       - Fri 11 Dec 20:10:49 GMT 2020
+# Last Change       - Fri 11 Dec 20:44:43 GMT 2020
 # Author E-Mail     - terminalforlife@yahoo.com
 # Author GitHub     - https://github.com/terminalforlife
 #------------------------------------------------------------------------------
@@ -15,12 +15,30 @@ mod1 + d
 	bash "$HOME"/.i3a/launcher
 
 # Toggle mounting of 'Main Data' filesystem.
-super + shift + 1
+mod4 + shift + 1
 	bash "$HOME"/.i3a/partmount -L 'Main\x20Data'
 
 # Open basic GUI calculator.
 XF86Calculator
 	xcalc
+
+# Open GUI Bluetooth manager.
+mod1 + ctrl + b
+	blueman-manager
+
+#--------------------------------------------------------Redshifter Adjustments
+
+# Lower Redshifter value.
+mod4 + 9
+	redshifter lower 500
+
+# Raise Redshifter value.
+mod4 + 0
+	redshifter raise 500
+
+# Reset Redshifter value.
+mod4 + 8
+	redshifter reset
 
 #-------------------------------------------------------Screenshots via `scrot`
 
@@ -74,9 +92,17 @@ mod1 + shift + q
 mod1 + {_,shift + }{j,k,l,semicolon}
 	bspc node -{f,s} {west,south,north,east}
 
-# Fullscreen mode for the current window.
-mod1 + shift + f
-	bspwm node -t fullscreen
+# Fullscreen mode for the current window. Can't toggle this?
+mod1 + ctrl + f
+	bspc node -t fullscreen
+
+# Regular tiled mode for the current window.
+mod1 + f
+	bspc node -t tiled
+
+# Floating mode for the current window.
+mod1 + shift + space
+	bspc node -t floating
 
 # Move window to workspace.
 mod1 + shift + {1-9,0}
@@ -89,3 +115,23 @@ mod1 + {v,h}
 # Cancel pre-selection of placement of a new window.
 mod1 + Escape
 	bspc node -p cancel
+
+#----------------------------------------------------------------Media Controls
+
+mod4 + p
+	bash "$HOME"/.i3a/track_notify
+
+mod4 + XF86AudioNext
+	mocp --seek +3
+
+mod4 + XF86AudioPrev
+	mocp --seek -3
+
+XF86AudioPlay
+	mocp -G
+
+XF86AudioNext
+	mocp --next
+
+XF86AudioPrev
+	mocp --previous
