@@ -1,0 +1,91 @@
+#------------------------------------------------------------------------------
+# Project Name      -
+# Started On        - Fri 11 Dec 15:58:54 GMT 2020
+# Last Change       - Fri 11 Dec 20:10:49 GMT 2020
+# Author E-Mail     - terminalforlife@yahoo.com
+# Author GitHub     - https://github.com/terminalforlife
+#------------------------------------------------------------------------------
+
+# Reload BSPWM & SXHKD configuration.
+mod1 + ctrl c
+	bash "$HOME"/bspwm/bspwmrc; pkill -USR1 -x sxhkd
+
+# Execute DMenu.
+mod1 + d
+	bash "$HOME"/.i3a/launcher
+
+# Toggle mounting of 'Main Data' filesystem.
+super + shift + 1
+	bash "$HOME"/.i3a/partmount -L 'Main\x20Data'
+
+# Open basic GUI calculator.
+XF86Calculator
+	xcalc
+
+#-------------------------------------------------------Screenshots via `scrot`
+
+# Take screenshot.
+Print
+	bash "$HOME"/.i3a/scrot_take
+
+# Take selectshot.
+shift + Print
+	bash "$HOME"/.i3a/scrot_sel_take
+
+# Take windowshot.
+ctrl + Print
+	bash "$HOME"/.i3a/scrot_win_take
+
+#----------------------------------------------------Terminal: `xfce4-terminal`
+
+# Open an applicable terminal.
+mod1 + Return
+	bash "$HOME"/.i3a/terminal
+
+# Regular terminal font size.
+shift + ctrl + Left
+	bash "$HOME"/.i3a/term_font_size -s 15
+
+# Maximum terminal font size.
+shift + ctrl + Right
+	bash "$HOME"/.i3a/term_font_size -s 32
+
+# Increment terminal font size.
+shift + ctrl + Up
+	bash "$HOME"/.i3a/term_font_size -r 1
+
+# Decrement terminal font size.
+shift + ctrl + Up
+	bash "$HOME"/.i3a/term_font_size -l 1
+
+#----------------------------------------------------------Workspace Management
+
+# Switch to different workspaces.
+mod1 + {1-9,0}
+	bspc desktop -f '^'{1-9,10}
+
+#-------------------------------------------------------------Window Management
+
+# Quit current window.
+mod1 + shift + q
+	bspc node -c
+
+# Switch to different window.
+mod1 + {_,shift + }{j,k,l,semicolon}
+	bspc node -{f,s} {west,south,north,east}
+
+# Fullscreen mode for the current window.
+mod1 + shift + f
+	bspwm node -t fullscreen
+
+# Move window to workspace.
+mod1 + shift + {1-9,0}
+  bspc node -d '^'{1-9,10}
+
+# Pre-select the placement of a new window.
+mod1 + {v,h}
+	bspc node -p {south,east}
+
+# Cancel pre-selection of placement of a new window.
+mod1 + Escape
+	bspc node -p cancel
