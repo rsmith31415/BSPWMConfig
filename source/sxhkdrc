@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 # Project Name      -
 # Started On        - Fri 11 Dec 15:58:54 GMT 2020
-# Last Change       - Fri 11 Dec 20:44:43 GMT 2020
+# Last Change       - Fri 11 Dec 21:12:16 GMT 2020
 # Author E-Mail     - terminalforlife@yahoo.com
 # Author GitHub     - https://github.com/terminalforlife
 #------------------------------------------------------------------------------
@@ -115,6 +115,14 @@ mod1 + {v,h}
 # Cancel pre-selection of placement of a new window.
 mod1 + Escape
 	bspc node -p cancel
+
+# Pull window from X position to current window.
+mod4 + shift + {j,k,l,semicolon}
+	bspc node -z {left,bottom,top,right} -10 -10
+
+# Push window away from X position of current window.
+mod4 + {j,k,l,semicolon}
+	bspc node -z {right,top,bottom,left} 10 10
 
 #----------------------------------------------------------------Media Controls
 
