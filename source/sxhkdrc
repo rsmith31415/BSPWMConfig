@@ -94,7 +94,7 @@ mod1 + {_,shift + }{j,k,l,semicolon}
 
 # Fullscreen mode for the current window. Can't toggle this?
 mod1 + ctrl + f
-	bspc node -t fullscreen
+        bspc node -t {fullscreen, floating}
 
 # Regular tiled mode for the current window.
 mod1 + f
@@ -120,13 +120,9 @@ mod1 + {v,h}
 mod1 + Escape
 	bspc node -p cancel
 
-# Pull window from X position to current window.
-mod4 + shift + {j,k,l,semicolon}
-	bspc node -z {left,bottom,top,right} -10 -10
-
-# Push window away from X position of current window.
-mod4 + {j,k,l,semicolon}
-	bspc node -z {left,bottom,top,right} 10 10
+# Resize windows
+mod4 + shift + {h,j,k,l}
+        bspwm_resize {west,south,north,east}
 
 #----------------------------------------------------------------Media Controls
 
