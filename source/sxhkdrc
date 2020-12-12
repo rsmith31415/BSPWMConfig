@@ -1,13 +1,13 @@
 #------------------------------------------------------------------------------
-# Project Name      -
+# Project Name      - BSPWMConfig/source/sxhkdrc
 # Started On        - Fri 11 Dec 15:58:54 GMT 2020
-# Last Change       - Fri 11 Dec 21:14:09 GMT 2020
+# Last Change       - Sat 12 Dec 01:16:46 GMT 2020
 # Author E-Mail     - terminalforlife@yahoo.com
 # Author GitHub     - https://github.com/terminalforlife
 #------------------------------------------------------------------------------
 
 # Reload BSPWM & SXHKD configuration.
-mod1 + ctrl c
+mod1 + ctrl + c
 	bash "$HOME"/bspwm/bspwmrc; pkill -USR1 -x sxhkd
 
 # Execute DMenu.
