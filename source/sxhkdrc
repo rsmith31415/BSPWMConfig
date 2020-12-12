@@ -1,14 +1,14 @@
 #------------------------------------------------------------------------------
 # Project Name      - BSPWMConfig/source/sxhkdrc
 # Started On        - Fri 11 Dec 15:58:54 GMT 2020
-# Last Change       - Sat 12 Dec 01:16:46 GMT 2020
+# Last Change       - Sat 12 Dec 02:31:33 GMT 2020
 # Author E-Mail     - terminalforlife@yahoo.com
 # Author GitHub     - https://github.com/terminalforlife
 #------------------------------------------------------------------------------
 
 # Reload BSPWM & SXHKD configuration.
 mod1 + ctrl + c
-	bash "$HOME"/bspwm/bspwmrc; pkill -USR1 -x sxhkd
+	bspc wm -r; pkill -USR1 -x sxhkd
 
 # Execute DMenu.
 mod1 + d
@@ -107,6 +107,10 @@ mod1 + shift + space
 # Move window to workspace.
 mod1 + shift + {1-9,0}
   bspc node -d '^'{1-9,10}
+
+# Move floating windows.
+mod4 + {j,k,l,semicolon}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Pre-select the placement of a new window.
 mod1 + {v,h}
